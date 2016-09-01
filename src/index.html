@@ -1,0 +1,114 @@
+<html ng-app="app">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Todo Application</title>
+  <!--bower:css-->
+  <link rel="stylesheet" href="bower_components/bulma/css/bulma.css" />
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+  <!--endbower-->
+  <!--inject:css-->
+  <!--endinject-->
+</head>
+
+<body ng-controller="TodoController as vm">
+  <div class="container">
+    <section class="hero is-primary">
+      <div class="hero-body" style="padding: 24px;">
+        <div class="container">
+          <h1 class="title">
+          Todo Application
+        </h1>
+          <h2 class="subtitle">
+          Get your life in order!
+        </h2>
+        </div>
+      </div>
+    </section>
+    <section class="box" style="margin-top: 24px;">
+      <h1 class="title">
+      Add Todo
+    </h1>
+      <p class="control">
+        <label class="label">Name</label>
+        <input type="text" class="input" ng-model="vm.blankTodo.name">
+      </p>
+      <p class="control">
+        <label class="label">Priority</label>
+        <span class="select">
+        <select ng-model="vm.blankTodo.priority">
+          <option value="">Select priority</option>
+          <option value="1">High Priority</option>
+          <option value="2">Medium Priority</option>
+          <option value="3">Low Priority</option>
+        </select>
+      </span>
+      </p>
+      <p class="control">
+        <button class="button is-primary" ng-click="vm.addTodo()">Add Todo</button>
+      </p>
+    </section>
+    <section class="box">
+      <h1 class="title">
+      Manage Todos
+    </h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Priority</th>
+            <th width="10%">Manage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="todo in vm.todos">
+            <td>
+              <span ng-hide="todo.edit">
+                {{todo.name}}  
+              </span>
+              <span ng-show="todo.edit">
+                <input type="text" class="input" ng-model="todo.name">
+              </span>
+            </td>
+            <td>
+              <span ng-hide="todo.edit">
+                {{todo.priority}}
+              </span>
+              <span ng-show="todo.edit">
+              <span class="select">
+                <select ng-model="vm.blankTodo.priority">
+                  <option value="">Select priority</option>
+                  <option value="1">High Priority</option>
+                  <option value="2">Medium Priority</option>
+                  <option value="3">Low Priority</option>
+                </select>
+              </span>
+              </span>
+            </td>
+            <td>
+              <span ng-hide="todo.edit">
+                <button class="button is-primary" ng-click="todo.edit = true;"><i class="fa fa-edit"></i></button>
+                <button class="button is-danger" ng-click="vm.removeTodo(todo);"><i class="fa fa-trash"></i></button>
+              </span>
+              <span ng-show="todo.edit">
+                <button class="button is-primary" ng-click="vm.updateTodo(todo)"><i class="fa fa-save"></i></button>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+  <!--bower:js-->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+  <!--endbower-->
+  <!--inject:js-->
+  <script src="app/app.module.js"></script>
+  <script src="app/todo.controller.js"></script>
+  <script src="app/todo.factory.js"></script>
+  <!--endinject-->
+</body>
+
+</html>

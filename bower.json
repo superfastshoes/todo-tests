@@ -1,0 +1,35 @@
+{
+  "name": "todoapp",
+  "homepage": "https://github.com/OriginCodeAcademy/2016-CW-FallCohort",
+  "authors": [
+    "Cameron Wilby <cameron@origincodeacademy.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "overrides": {
+    "bulma": {
+      "main": [
+        "css/bulma.css"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.css"
+      ]
+    }
+  },
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bulma": "^0.1.2",
+    "font-awesome": "^4.6.3",
+    "angular-toastr": "^2.1.1"
+  }
+}
